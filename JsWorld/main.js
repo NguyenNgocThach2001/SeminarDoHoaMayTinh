@@ -10,6 +10,8 @@ function main() {
 main();
 
 
+
+
 // const container = document.querySelector('#scene-container');
 // const scene = new THREE.Scene();
 // const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
