@@ -30,8 +30,8 @@ class World {
     const cube2 = createCube();
     cube1.position.x += 2;
     cube1.rotation.x += 5;
-    cube2.position.x -= 2;
-    cube2.rotation.x -= 5;
+    cube2.position.x -= 0;
+    cube2.rotation.x -= 0;
     cube1.rotation.x = 0;
     cube1.rotation.y = 0;
     cube1.rotation.z = 0;

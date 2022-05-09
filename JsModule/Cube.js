@@ -9,7 +9,7 @@ let lastZ = 0;
 
 function createCube() {
   const geometry = new THREE.BoxGeometry(2, 2, 2);
-  geometry.faces = new THREE.Color(0xFFFFFF);//Rear 2
+  geometry.faces = new THREE.Color(0x22FFFF);//Rear 2
 
   const material = new THREE.MeshBasicMaterial();
 
