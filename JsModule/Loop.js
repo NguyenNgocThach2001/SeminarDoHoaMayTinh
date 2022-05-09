@@ -1,7 +1,7 @@
 
 const clock = new THREE.Clock();
 let sumDelta = 0;
-let flip = 0;
+let flip = 1;
 
 class Loop {
     constructor(camera, scene, renderer, controls) {
@@ -26,6 +26,10 @@ class Loop {
         const delta = clock.getDelta();
         console.log(this.camera.position)
         sumDelta += delta;
+        if(sumDelta > 1){
+            sumDelta = 0;
+            flip = -flip;
+        }
             // console.log(sumDelta);
             // console.log(flip);
         this.controls.update();

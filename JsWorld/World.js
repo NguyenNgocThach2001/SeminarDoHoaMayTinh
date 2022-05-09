@@ -1,6 +1,7 @@
 import { createCamera } from '../JsModule/Camera.js';
 import { createCube } from '../JsModule/Cube.js';
 import {createCube1 } from '../JsModule/Cube1.js';
+import {createCube2 } from '../JsModule/Cube2.js';
 import { createScene } from '../JsModule/Scene.js';
 
 import { createRenderer } from '../JsModule/Renderer.js';
@@ -28,18 +29,16 @@ class World {
 
     const cube1 = createCube1();
     const cube2 = createCube();
+    const cube3 = createCube2();
     cube1.position.x += 2;
-    cube1.rotation.x += 5;
-    cube2.position.x -= 0;
-    cube2.rotation.x -= 0;
-    cube1.rotation.x = 0;
-    cube1.rotation.y = 0;
-    cube1.rotation.z = 0;
-    cube2.rotation.x = 0;
-    cube2.rotation.y = 0;
-    cube2.rotation.z = 0;
+    cube1.rotation.set(0, 0, 0);
+    cube2.rotation.set(0, 0, 0);
     loop.updatables.push(cube1);
     loop.updatables.push(cube2);
+    for(let i = 0; i < 8; i++) {
+      loop.updatables.push(cube3[i]);
+      scene.add(cube3[i]);
+    }
     
     scene.add(cube1);
     scene.add(cube2);

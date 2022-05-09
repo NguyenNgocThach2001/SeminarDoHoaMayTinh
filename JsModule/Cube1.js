@@ -5,8 +5,6 @@ let flippx = 1;
 
 function createCube1() {
   const geometry = new THREE.BoxGeometry(2, 2, 2);
-  geometry.faces = new THREE.Color(0xFFFFFF);//Rear 2
-
   const material = new THREE.MeshBasicMaterial();
 
   const cube = new THREE.Mesh(geometry, material);
@@ -21,6 +19,7 @@ function moveRightF(cube, delta){
   cube.position.x += 50 * delta * flippx;
   cube.position.y -= 25 * delta * flippy;
   cube.rotation.z = (cube.rotation.z + radiansPerSecond * - delta) % (2 * Math.PI);
+
   if(cube.position.x > 50 && cube.position.y < -25) {
     flippy = -1;
   }
