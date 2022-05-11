@@ -6,13 +6,15 @@ let flippz = 1;
 
 function createCube2() {
   const cubes = [];
-  const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
   const material = new THREE.MeshBasicMaterial();
-  for(let i = 0; i< 8; i++)
+  for(let i = 0; i< 4; i++) {
     cubes.push(new THREE.Mesh(geometry, material));
-  for (let i = 0; i < 8; i++)
+    cubes[i].material.color.setHex( Math.random() * 0xffffff );
+  }
+  for (let i = 0; i < 4; i++)
     cubes[i].tick = (delta, flip) => {
-        if(i > 3)
+        if(i > 1)
             moveRightF(cubes[i], delta, flip);
         else 
             moveRightF(cubes[i], delta, -flip);

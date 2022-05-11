@@ -2,7 +2,9 @@ import { createCamera } from '../JsModule/Camera.js';
 import { createCube } from '../JsModule/Cube.js';
 import {createCube1 } from '../JsModule/Cube1.js';
 import {createCube2 } from '../JsModule/Cube2.js';
+import {createCube3 } from '../JsModule/Cube3.js';
 import { createScene } from '../JsModule/Scene.js';
+
 
 import { createRenderer } from '../JsModule/Renderer.js';
 import { Resizer } from '../JsModule/Resizer.js';
@@ -30,16 +32,21 @@ class World {
     const cube1 = createCube1();
     const cube2 = createCube();
     const cube3 = createCube2();
+    const cube4 = createCube3();
     cube1.position.x += 2;
     cube1.rotation.set(0, 0, 0);
     cube2.rotation.set(0, 0, 0);
     loop.updatables.push(cube1);
     loop.updatables.push(cube2);
-    for(let i = 0; i < 8; i++) {
+    for(let i = 0; i < 4; i++) {
       loop.updatables.push(cube3[i]);
       scene.add(cube3[i]);
     }
-    
+
+    for(let i = 0; i < 50; i++) {
+      loop.updatables.push(cube4[i]);
+      scene.add(cube4[i]);
+    }
     scene.add(cube1);
     scene.add(cube2);
     const resizer = new Resizer(container, camera, renderer);

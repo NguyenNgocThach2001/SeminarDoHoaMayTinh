@@ -14,7 +14,7 @@ function createCube() {
   const material = new THREE.MeshBasicMaterial();
 
   const cube = new THREE.Mesh(geometry, material);
-  
+  cube.material.color.setHex( Math.random() * 0xffffff );
   cube.tick = (delta, flip) => {
     if(moveRight == 1) 
       moveRightF(cube, delta);

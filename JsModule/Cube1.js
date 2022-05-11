@@ -8,7 +8,7 @@ function createCube1() {
   const material = new THREE.MeshBasicMaterial();
 
   const cube = new THREE.Mesh(geometry, material);
-  
+  cube.material.color.setHex( Math.random() * 0xffffff );
   cube.tick = (delta, flip) => {
       moveRightF(cube, delta);
   };
@@ -16,6 +16,7 @@ function createCube1() {
 }
 
 function moveRightF(cube, delta){
+  
   cube.position.x += 50 * delta * flippx;
   cube.position.y -= 25 * delta * flippy;
   cube.rotation.z = (cube.rotation.z + radiansPerSecond * - delta) % (2 * Math.PI);
@@ -32,10 +33,12 @@ function moveRightF(cube, delta){
   }
   if(cube.position.y > 25 && flippy == -1) {
     flippy = 1;
+    
   }
   if(cube.position.y <= 0 && flippy == 1){
       flippy = 1;
       flippx = 1;
+      cube.material.color.setHex( Math.random() * 0xffffff );
   }
 }
 
