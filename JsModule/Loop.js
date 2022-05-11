@@ -23,6 +23,7 @@ const clock = new THREE.Clock();
 let sumDelta = 0;
 let flip = 1;
 let p = 1;
+let FLIPP = 1;
 
 class Loop {
     constructor(camera, scene, renderer, controls) {
@@ -48,14 +49,15 @@ class Loop {
         sumDelta += delta;
         if(sumDelta > 1){
             sumDelta = 0;
-            flip = (flip + 3) % 7;
+            flip = (flip + 5) % 6;
+            FLIPP = - FLIPP;
         }
             // console.log(sumDelta);
             // console.log(flip);
         this.controls.update();
         for (const object of this.updatables) {
             if(object.tick != null)
-                object.tick(delta, flip);
+                object.tick(delta, flip, FLIPP);
         }
         var p = new THREE.Vector3(0, 0, 0);
         let px = Math.random() < 0.5 ? -1 : 1;
@@ -64,9 +66,11 @@ class Loop {
         var ax = new THREE.Vector3(0, 1, 0);
         var ay = new THREE.Vector3(1, 0, 0);
         var az = new THREE.Vector3(0, 0, 1);
-        this.camera.rotateAroundWorldAxis(p,ax, Math.random() * 2 * delta) ;
-        this.camera.rotateAroundWorldAxis(p,ay, Math.random() * 2 * delta) ;
-        this.camera.rotateAroundWorldAxis(p,az, Math.random() * 2 * delta) ;
+        if(FLIPP == 1)
+            this.camera.rotateAroundWorldAxis(p,ax,1 * delta) ;
+        this.camera.rotateAroundWorldAxis(p,az,1 * delta) ;
+        if(FLIPP == 1)
+            this.camera.rotateAroundWorldAxis(p,ay,1 * delta) ;
     }
 }
 export { Loop }

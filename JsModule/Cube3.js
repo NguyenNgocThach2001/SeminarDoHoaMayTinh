@@ -34,16 +34,13 @@ function createCube3() {
   }
   
   for (let i = 0; i < 50; i++)
-    cubes[i].tick = (delta, flip) => 
-        moveRightF(cubes[i], delta, flip, new THREE.Vector3(2, 1, 2));
+    cubes[i].tick = (delta, flip, FLIPP) => 
+        moveRightF(cubes[i], delta, flip, new THREE.Vector3(2, 1, 2), FLIPP);
 
   return cubes;
 }
 
-function moveRightF(cube, delta, flip, anchorPoint){
-    cube.rotation.y += (1 + Math.random() * 5) * delta;
-    cube.rotation.x += (1 + Math.random() * 5) * delta;
-    cube.rotation.z += (1 + Math.random() * 5) * delta;
+function moveRightF(cube, delta, flip, anchorPoint, FLIPP){
     var p = new THREE.Vector3(0, 0, 0);
     let px = Math.random() < 0.5 ? -1 : 1;
     let py = Math.random() < 0.5 ? -1 : 1;
@@ -51,10 +48,15 @@ function moveRightF(cube, delta, flip, anchorPoint){
     var ax = new THREE.Vector3(0, 1, 0);
     var ay = new THREE.Vector3(1, 0, 0);
     var az = new THREE.Vector3(0, 0, 1);
-    cube.rotateAroundWorldAxis(p,ax, Math.random() * flip * delta) ;
-    cube.rotateAroundWorldAxis(p,ay, Math.random() * flip * delta) ;
-    cube.rotateAroundWorldAxis(p,az, Math.random() * flip * delta) ;
-    if(Math.random() < 0.001)
+    cube.rotation.y += (1 + Math.random() * 2 * px) * delta;
+    cube.rotation.x += (1 + Math.random() * 2 * py) * delta;
+    cube.rotation.z += (1 + Math.random() * 2 * pz) * delta;
+    if(FLIPP == -1)
+        cube.rotateAroundWorldAxis(p,ax, Math.random() * flip * delta ) ;
+    if(FLIPP == 1)
+        cube.rotateAroundWorldAxis(p,ay, Math.random() * flip * delta ) ;
+    cube.rotateAroundWorldAxis(p,az, Math.random() * flip * delta ) ;
+    if(Math.random() < 0.0001)
         cube.material.color.setHex( Math.random() * 0xffffff );
 }   
 
