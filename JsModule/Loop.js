@@ -49,7 +49,7 @@ class Loop {
         sumDelta += delta;
         if(sumDelta > 1){
             sumDelta = 0;
-            flip = (flip + 5) % 6;
+            flip = (flip + 6) % 8;
             FLIPP = - FLIPP;
         }
             // console.log(sumDelta);
